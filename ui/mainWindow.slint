@@ -1,6 +1,21 @@
+import { LineEdit } from "std-widgets.slint";
 export component MainWindow inherits Window {
+    title: "Minecraft Mod Manager";
+    min-width: 1100px;
+    min-height: 600px;
     Text {
-        text: "hello world";
+        text: "Search a mod";
+        y: 69px;
+        x: 462px;
         color: green;
+        font-size: 33px;
+    }
+
+    LineEdit {
+        horizontal-alignment: TextHorizontalAlignment.center;
+        placeholder-text: "Search something!";
+        width: 500px;
+
+
     }
 }
