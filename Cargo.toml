@@ -2,9 +2,12 @@
 name = "McModManager-rs"
 version = "0.1.0"
 edition = "2024"
+authors = ["_1ms"]
+description = "A modern and ergonomic minecraft mod manager written in rust."
 
 [dependencies]
 slint = "1.11.0"
 
 [build-dependencies]
 slint-build = "1.8.0"
+winres = "0.1.12"
