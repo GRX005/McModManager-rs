@@ -4,3 +4,6 @@ rustflags = [
     "-C", "link-args=/RELEASE",
     "-C", "control-flow-guard",
 ]
+#For vulcan, but it it doesn't work with it properly.
+#[env]
+#SKIA_BINARIES_URL = "https://github.com/rust-skia/skia-binaries/releases/download/0.84.0/skia-binaries-8df1749a67a2800c2904-x86_64-pc-windows-msvc-d3d-gl-svg-textlayout-vulkan.tar.gz"

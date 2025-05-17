@@ -1,5 +1,5 @@
 fn main() {
-    slint_build::compile("ui/mainWindow.slint").expect("Slint build failed"); 
+    slint_build::compile("ui/mainWindow.slint").expect("Slint build failed");
     //Windows specific:
     println!("cargo:rustc-link-arg=/SUBSYSTEM:WINDOWS,10.0");
     let mut res = winres::WindowsResource::new();

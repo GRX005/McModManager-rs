@@ -6,7 +6,7 @@ authors = ["_1ms"]
 description = "A modern and ergonomic minecraft mod manager written in rust."
 
 [dependencies]
-slint = "1.11.0"
+slint = { version = "1.11.0", features = ["renderer-winit-skia-opengl"] }
 
 [build-dependencies]
 slint-build = "1.8.0"
