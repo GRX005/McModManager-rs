@@ -1,8 +1,9 @@
 fn main() {
     slint_build::compile("ui/mainWindow.slint").expect("Slint build failed");
     //Windows specific:
-    println!("cargo:rustc-link-arg=/SUBSYSTEM:WINDOWS,10.0");
+    //println!("cargo:rustc-link-arg=/SUBSYSTEM:WINDOWS,10.0");
     let mut res = winres::WindowsResource::new();
+    res.set_icon("icon.ico");
     res.set("FileDescription", "Minecraft Mod Manager");
     res.set("CompanyName", "_1ms");
     res.set("ProductName", "McModManager");

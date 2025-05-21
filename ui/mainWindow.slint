@@ -1,21 +1,40 @@
-import { LineEdit } from "std-widgets.slint";
+import { LineEdit, SpinBox, TabWidget} from "std-widgets.slint";
+
+component Explore {
+    Text {
+          text: "Search a mod";
+          y: root.height/2-80px;
+          x: root.width/2-200px;
+          color: green;
+          font-size: 33px;
+    }
+    LineEdit {
+       horizontal-alignment: TextHorizontalAlignment.center;
+          placeholder-text: "Search something!";
+                            width: 500px;
+                        }
+}
+
 export component MainWindow inherits Window {
     title: "Minecraft Mod Manager";
     min-width: 1100px;
     min-height: 600px;
-    Text {
-        text: "Search a mod";
-        y: 69px;
-        x: 462px;
-        color: green;
-        font-size: 33px;
+    icon: @image-url("../icon.ico");
+    background: transparent;
+    TabWidget {
+        Tab {
+            title: "Explore";
+            Explore {}
+        }
+        Tab {
+        title: "Installed";
+        Rectangle {background: red;}
+        }
     }
 
-    LineEdit {
-        horizontal-alignment: TextHorizontalAlignment.center;
-        placeholder-text: "Search something!";
-        width: 500px;
 
 
-    }
+
+
 }
+
