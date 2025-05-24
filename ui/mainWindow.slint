@@ -1,4 +1,36 @@
-import { Button } from "std-widgets.slint";
+import { Button, TextEdit, LineEdit } from "std-widgets.slint";
+
+component dlp {
+            Text {
+                font-size: 20px;
+                horizontal-alignment: TextHorizontalAlignment.center;
+                text: "Download";
+                y: 189px;
+                x: 512px;
+            }
+            LineEdit {
+                 height: 30px;
+                 placeholder-text: "Search mods";
+                 width: 250px;
+                y: 335px;
+
+            }
+}
+
+component insp {
+    Text {
+    text: "Installed";
+    font-size: 20px;
+    }
+}
+
+component settp {
+    Text {
+    text: "Settings";
+    font-size: 20px;
+    }
+}
+
 export component MainWindow inherits Window {
     title: "Minecraft Mod Manager";
     min-width: 1100px;
@@ -79,6 +111,12 @@ export component MainWindow inherits Window {
             }
             }
         }
+        //Below select rectange
+        if selBtn == 0: dlp {}
+        if selBtn == 1: insp {}
+        if selBtn == 2: settp {}
+
+
     }
 
 }
