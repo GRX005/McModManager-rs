@@ -6,7 +6,7 @@ use window_vibrancy::apply_mica;
 
 slint::include_modules!();
 
-fn main() -> Result<(), slint::PlatformError> { //TODO error log.
+fn main() -> Result<(), slint::PlatformError> { //TODO error to log file.
     BackendSelector::new().require_opengl().select()?;
     let mw = MainWindow::new()?;
     mw.window().with_winit_window(|win| {

@@ -1,33 +1,33 @@
 import { Button, TextEdit, LineEdit } from "std-widgets.slint";
 
 component dlp {
-            Text {
-                font-size: 20px;
-                horizontal-alignment: TextHorizontalAlignment.center;
-                text: "Download";
-                y: 189px;
-                x: 512px;
-            }
-            LineEdit {
-                 height: 30px;
-                 placeholder-text: "Search mods";
-                 width: 250px;
-                y: 335px;
+    Text {
+        font-size: 20px;
+        horizontal-alignment: TextHorizontalAlignment.center;
+        text: "Download";
+        y: 189px;
+        x: 512px;
+    }
 
-            }
+    LineEdit {
+        height: 30px;
+        placeholder-text: "Search mods";
+        width: 250px;
+        y: 335px;
+    }
 }
 
 component insp {
     Text {
-    text: "Installed";
-    font-size: 20px;
+        text: "Installed";
+        font-size: 20px;
     }
 }
 
 component settp {
     Text {
-    text: "Settings";
-    font-size: 20px;
+        text: "Settings";
+        font-size: 20px;
     }
 }
 
@@ -38,85 +38,79 @@ export component MainWindow inherits Window {
     icon: @image-url("../icon.ico");
     background: transparent;
     //dl=0,ins=1,sett=2 This is the prev btn.
-    property <int> selBtn : 0;
+    property <int> selBtn: 0;
 //TODO dl and sett icon blurry.
     VerticalLayout {
-            x: 0;  y: 0;
-            width: parent.width;
-            height: parent.height;
+        x: 0;
+        y: 0;
+        width: parent.width;
+        height: parent.height;
         Rectangle {
             background: rgba(55, 55, 55, 0.8);
             border-radius: 10px;
             height: 40px;
             width: 400px;
-            x: (parent.width - self.width)*1px / 2px;
-
+            x: (parent.width - self.width) * 1px / 2px;
             HorizontalLayout {
-            height: 32px;
-            spacing: 20px;
-            padding-left: 5px;
-            padding-right: 5px;
-            dl := Button {
-                checkable: true;
-                checked: true;
-                text: "Download";
-                icon: self.checked ? @image-url("dlb.svg") : @image-url("dlw.svg");
-
-                clicked => {
-                    if (selBtn==1) {
-                        ins.checked=false;
-                    } else if (selBtn==2) {
-                        sett.checked=false;
-                    } else {
-                        self.checked=true
+                height: 32px;
+                spacing: 20px;
+                padding-left: 5px;
+                padding-right: 5px;
+                dl := Button {
+                    checkable: true;
+                    checked: true;
+                    text: "Download";
+                    icon: self.checked ? @image-url("dlb.svg") : @image-url("dlw.svg");
+                    clicked => {
+                        if (selBtn == 1) {
+                            ins.checked = false;
+                        } else if (selBtn == 2) {
+                            sett.checked = false;
+                        } else {
+                            self.checked = true
+                        }
+                        selBtn = 0;
                     }
-                    selBtn=0;
                 }
-            }
-            ins := Button {
-                checkable: true;
-                checked: false;
-                text: "Installed";
-                icon: self.checked ? @image-url("insb.png") : @image-url("insw.png");
 
-                clicked => {
-
-                    if (selBtn==0) {
-                        dl.checked=false;
-                    } else if (selBtn==2) {
-                        sett.checked=false;
-                    }  else {
-                        self.checked=true
+                ins := Button {
+                    checkable: true;
+                    checked: false;
+                    text: "Installed";
+                    icon: self.checked ? @image-url("insb.png") : @image-url("insw.png");
+                    clicked => {
+                        if (selBtn == 0) {
+                            dl.checked = false;
+                        } else if (selBtn == 2) {
+                            sett.checked = false;
+                        } else {
+                            self.checked = true
+                        }
+                        selBtn = 1;
                     }
-                    selBtn=1;
                 }
-            }
-            sett := Button {
-                checkable: true;
-                checked: false;
-                text: "Settings";
-                icon: self.checked ? @image-url("settb.svg") : @image-url("settw.svg");
 
-                clicked => {
-
-                    if (selBtn==1) {
-                        ins.checked=false;
-                    } else if (selBtn==0) {
-                        dl.checked=false;
-                    } else {
-                        self.checked=true
+                sett := Button {
+                    checkable: true;
+                    checked: false;
+                    text: "Settings";
+                    icon: self.checked ? @image-url("settb.svg") : @image-url("settw.svg");
+                    clicked => {
+                        if (selBtn == 1) {
+                            ins.checked = false;
+                        } else if (selBtn == 0) {
+                            dl.checked = false;
+                        } else {
+                            self.checked = true
+                        }
+                        selBtn = 2;
                     }
-                    selBtn=2;
                 }
-            }
             }
         }
         //Below select rectange
-        if selBtn == 0: dlp {}
-        if selBtn == 1: insp {}
-        if selBtn == 2: settp {}
-
-
+        if selBtn == 0: dlp { }
+        if selBtn == 1: insp { }
+        if selBtn == 2: settp { }
     }
-
 }
