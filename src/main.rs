@@ -12,6 +12,7 @@ fn main() -> Result<(), slint::PlatformError> { //TODO error log.
     mw.window().with_winit_window(|win| {
         apply_mica(win, None).expect("Non-Windows platform.");
     });
+
     mw.run()
 }
 

@@ -1,40 +1,84 @@
-import { LineEdit, SpinBox, TabWidget} from "std-widgets.slint";
-
-component Explore {
-    Text {
-          text: "Search a mod";
-          y: root.height/2-80px;
-          x: root.width/2-200px;
-          color: green;
-          font-size: 33px;
-    }
-    LineEdit {
-       horizontal-alignment: TextHorizontalAlignment.center;
-          placeholder-text: "Search something!";
-                            width: 500px;
-                        }
-}
-
+import { Button } from "std-widgets.slint";
 export component MainWindow inherits Window {
     title: "Minecraft Mod Manager";
     min-width: 1100px;
     min-height: 600px;
     icon: @image-url("../icon.ico");
     background: transparent;
-    TabWidget {
-        Tab {
-            title: "Explore";
-            Explore {}
-        }
-        Tab {
-        title: "Installed";
-        Rectangle {background: red;}
+    //dl=0,ins=1,sett=2 This is the prev btn.
+    property <int> selBtn : 0;
+//TODO dl and sett icon blurry.
+    VerticalLayout {
+            x: 0;  y: 0;
+            width: parent.width;
+            height: parent.height;
+        Rectangle {
+            background: rgba(55, 55, 55, 0.8);
+            border-radius: 10px;
+            height: 40px;
+            width: 400px;
+            x: (parent.width - self.width)*1px / 2px;
+
+            HorizontalLayout {
+            height: 32px;
+            spacing: 20px;
+            padding-left: 5px;
+            padding-right: 5px;
+            dl := Button {
+                checkable: true;
+                checked: true;
+                text: "Download";
+                icon: self.checked ? @image-url("dlb.svg") : @image-url("dlw.svg");
+
+                clicked => {
+                    if (selBtn==1) {
+                        ins.checked=false;
+                    } else if (selBtn==2) {
+                        sett.checked=false;
+                    } else {
+                        self.checked=true
+                    }
+                    selBtn=0;
+                }
+            }
+            ins := Button {
+                checkable: true;
+                checked: false;
+                text: "Installed";
+                icon: self.checked ? @image-url("insb.png") : @image-url("insw.png");
+
+                clicked => {
+
+                    if (selBtn==0) {
+                        dl.checked=false;
+                    } else if (selBtn==2) {
+                        sett.checked=false;
+                    }  else {
+                        self.checked=true
+                    }
+                    selBtn=1;
+                }
+            }
+            sett := Button {
+                checkable: true;
+                checked: false;
+                text: "Settings";
+                icon: self.checked ? @image-url("settb.svg") : @image-url("settw.svg");
+
+                clicked => {
+
+                    if (selBtn==1) {
+                        ins.checked=false;
+                    } else if (selBtn==0) {
+                        dl.checked=false;
+                    } else {
+                        self.checked=true
+                    }
+                    selBtn=2;
+                }
+            }
+            }
         }
     }
 
-
-
-
-
 }
-
